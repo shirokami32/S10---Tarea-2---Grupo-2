@@ -37,6 +37,14 @@ private:
         for (int x : temporal) insert(x);
     }
 
+public:
+    CuckooHash(int n, int intentos) {
+        size = n;
+        maxIntentos = intentos;
+        tabla1.assign(size, VACIO);
+        tabla2.assign(size, VACIO);
+    }
+
 int main() {
 
 }
