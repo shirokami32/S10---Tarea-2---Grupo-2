@@ -41,8 +41,8 @@ public:
     CuckooHash(int n, int intentos) {
         size = n;
         maxIntentos = intentos;
-        tabla1.assign(size, VACIO);
-        tabla2.assign(size, VACIO);
+        tabla1.assign(size, vacio);
+        tabla2.assign(size, vacio);
     }
     void insert(int key) {
         int actual = key;
@@ -52,7 +52,7 @@ public:
         while (intentos < maxIntentos) {
             if (enPrimera) {
                 int pos = hash1(actual);
-                if (tabla1[pos] == VACIO) {
+                if (tabla1[pos] == vacio) {
                     tabla1[pos] = actual;
                     return;
                 } else {
@@ -61,7 +61,7 @@ public:
                 }
             } else {
                 int pos = hash2(actual);
-                if (tabla2[pos] == VACIO) {
+                if (tabla2[pos] == vacio) {
                     tabla2[pos] = actual;
                     return;
                 } else {
