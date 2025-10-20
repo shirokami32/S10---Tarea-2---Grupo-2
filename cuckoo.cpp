@@ -49,6 +49,34 @@ public:
         int intentos = 0;
         bool enPrimera = true;
 
+        while (intentos < maxIntentos) {
+            if (enPrimera) {
+                int pos = hash1(actual);
+                if (tabla1[pos] == VACIO) {
+                    tabla1[pos] = actual;
+                    return;
+                } else {
+                    swap(actual, tabla1[pos]);
+                    enPrimera = false;
+                }
+            } else {
+                int pos = hash2(actual);
+                if (tabla2[pos] == VACIO) {
+                    tabla2[pos] = actual;
+                    return;
+                } else {
+                    swap(actual, tabla2[pos]);
+                    enPrimera = true;
+                }
+            }
+            intentos++;
+        }
+        rehash();
+        insert(actual);
+    }
+
+
+
 
 
 int main() {
