@@ -44,6 +44,12 @@ public:
         tabla1.assign(size, VACIO);
         tabla2.assign(size, VACIO);
     }
+    void insert(int key) {
+        int actual = key;
+        int intentos = 0;
+        bool enPrimera = true;
+
+
 
 int main() {
 
