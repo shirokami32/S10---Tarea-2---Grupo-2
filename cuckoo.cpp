@@ -31,7 +31,10 @@ private:
         size *= 2;
         tabla1.assign(size, vacio);
         tabla2.assign(size, vacio);
-        maxIntentos += 5; 
+        maxIntentos += 5;
+
+        // reinsertar datos
+        for (int x : temporal) insert(x);
     }
 
 int main() {
