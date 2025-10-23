@@ -75,10 +75,40 @@ public:
         insert(actual);
     }
 
+   void print() {
+        cout << "Tabla 1: ";
+        for (int x : tabla1) {
+            if (x == VACIO) cout << "_ ";
+            else cout << x << " ";
+        }
+        cout << endl;
 
 
-
+        cout << "Tabla 2: ";
+        for (int x : tabla2) {
+            if (x == VACIO) cout << "_ ";
+            else cout << x << " ";
+        }
+        cout << endl;
+    }
+};
 
 int main() {
+
+    CuckooHash hash(5, 10);
+
+
+    int datos[] = {10, 22, 31, 4, 15, 28, 17, 88, 33, 46, 11};
+
+
+    for (int x : datos) {
+        cout << "Insertando: " << x << endl;
+        hash.insert(x);
+        hash.print();
+        cout << endl;
+    }
+
+
+    return 0;
 
 }
