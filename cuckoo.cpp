@@ -1,6 +1,8 @@
 #include <iostream>
 #include <vector>
 #include <climits>
+#include <algorithm>
+#include <random>
 using namespace std;
 
 class CuckooHash {
@@ -11,14 +13,13 @@ private:
     int maxIntentos;
     int vacio = INT_MIN;
 
-    int hash1(int key) {
+    int hash1(int key){
         return key % size;
     }
 
-    int hash2(int key) {
-        return (key / size) % size;
+    int hash2(int key){
+        return (key / size + key * 7) % size;
     }
-
     void rehash() {
         cout << "Rehash activado. Nuevo tamano: " <<size * 2 << endl;
         vector<int> temporal;
@@ -78,7 +79,7 @@ public:
    void print() {
         cout << "Tabla 1: ";
         for (int x : tabla1) {
-            if (x == VACIO) cout << "_ ";
+            if (x == vacio) cout << "_ ";
             else cout << x << " ";
         }
         cout << endl;
@@ -86,7 +87,7 @@ public:
 
         cout << "Tabla 2: ";
         for (int x : tabla2) {
-            if (x == VACIO) cout << "_ ";
+            if (x == vacio) cout << "_ ";
             else cout << x << " ";
         }
         cout << endl;
@@ -97,8 +98,15 @@ int main() {
 
     CuckooHash hash(5, 10);
 
+    vector<int> datos(100);
+    for (int i = 0; i < 100; ++i){
+        datos[i] = i + 1;
+    }
 
-    int datos[] = {10, 22, 31, 4, 15, 28, 17, 88, 33, 46, 11};
+    random_device rd;
+    mt19937 g(rd());
+
+    shuffle(datos.begin(), datos.end(), g);
 
 
     for (int x : datos) {
